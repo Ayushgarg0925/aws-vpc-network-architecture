@@ -6,7 +6,7 @@ This project demonstrates the creation of a secure AWS networking environment us
 
 # Architecture Diagram
 
-[Insert Architecture Diagram Here]
+<img width="1917" height="865" alt="resource-map" src="https://github.com/user-attachments/assets/37ca44f7-536a-408d-b500-baa2026507ba" />
 
 ## Architecture
 
