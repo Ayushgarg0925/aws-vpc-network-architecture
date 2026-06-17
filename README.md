@@ -6,7 +6,20 @@ This project demonstrates the creation of a secure AWS networking environment us
 
 # Architecture Diagram
 
-<img width="1917" height="865" alt="resource-map" src="https://github.com/user-attachments/assets/37ca44f7-536a-408d-b500-baa2026507ba" />
+Internet
+    |
+Internet Gateway
+    |
+Public Route Table
+    |
+-------------------------
+|                       |
+Public Subnet-1     Public Subnet-2
+|                       |
+-------------------------
+Private Route Table
+|                       |
+Private Subnet-1    Private Subnet-2
 
 ## Architecture
 
