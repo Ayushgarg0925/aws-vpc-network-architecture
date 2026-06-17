@@ -2,116 +2,204 @@
 
 ## Project Overview
 
-This project demonstrates the creation of a secure AWS networking environment using Amazon VPC. The architecture consists of public and private subnets distributed across multiple Availability Zones to improve security and availability.
+This project demonstrates the design and implementation of a secure and scalable AWS Virtual Private Cloud (VPC) architecture. The infrastructure is designed using public and private subnets distributed across multiple Availability Zones (AZs) to ensure high availability, fault tolerance, and network isolation.
 
-# Architecture Diagram
+The architecture follows AWS networking best practices and provides a strong foundation for deploying production-ready cloud applications.
 
-[Insert Architecture Diagram Here]
+---
 
-## Architecture
+## Project Highlights
 
-VPC CIDR: 10.0.0.0/16
+* Designed a custom AWS VPC with CIDR block `10.0.0.0/16`
+* Created 2 Public Subnets and 2 Private Subnets
+* Configured Internet Gateway (IGW) for internet connectivity
+* Implemented Public and Private Route Tables
+* Distributed resources across multiple Availability Zones
+* Established network segmentation for enhanced security
+* Followed AWS Well-Architected Framework principles
 
-Public Subnet 1: 10.0.1.0/24
+---
 
-Public Subnet 2: 10.0.2.0/24
+## Architecture Diagram
 
-Private Subnet 1: 10.0.3.0/24
+![AWS VPC Architecture](https://github.com/user-attachments/assets/37ca44f7-536a-408d-b500-baa2026507ba)
 
-Private Subnet 2: 10.0.4.0/24
+---
 
-Internet Gateway attached to VPC
+## Architecture Details
 
-Public Route Table associated with Public Subnets
+### VPC Configuration
 
-Private Route Table associated with Private Subnets
+| Resource | CIDR Block  |
+| -------- | ----------- |
+| VPC      | 10.0.0.0/16 |
+
+### Public Subnets
+
+| Subnet          | CIDR Block  |
+| --------------- | ----------- |
+| Public-Subnet-1 | 10.0.1.0/24 |
+| Public-Subnet-2 | 10.0.2.0/24 |
+
+### Private Subnets
+
+| Subnet           | CIDR Block  |
+| ---------------- | ----------- |
+| Private-Subnet-1 | 10.0.3.0/24 |
+| Private-Subnet-2 | 10.0.4.0/24 |
+
+### Networking Components
+
+* Internet Gateway attached to VPC
+* Public Route Table associated with Public Subnets
+* Private Route Table associated with Private Subnets
+* Route configured for internet access through Internet Gateway
+
+---
+
+## Architecture Flow
+
+```text
+Internet
+    │
+    ▼
+Internet Gateway
+    │
+    ▼
+Public Route Table
+    │
+ ┌──┴──┐
+ ▼     ▼
+Public Public
+Subnet Subnet
+  1      2
+
+Private Route Table
+    │
+ ┌──┴──┐
+ ▼     ▼
+Private Private
+Subnet  Subnet
+  1       2
+```
+
+---
 
 ## AWS Services Used
 
-- Amazon VPC
-- Subnets
-- Route Tables
-- Internet Gateway
+* Amazon VPC
+* Subnets
+* Route Tables
+* Internet Gateway (IGW)
 
-## Implementation Steps
+---
 
-### Step 1: Create VPC
+## Implementation Summary
 
-Name: Test-VPC
+The following tasks were completed during implementation:
 
-CIDR Block: 10.0.0.0/16
+* Created a custom VPC with CIDR block `10.0.0.0/16`
+* Created 2 Public Subnets and 2 Private Subnets
+* Attached an Internet Gateway to the VPC
+* Configured Public and Private Route Tables
+* Associated subnets with their respective route tables
+* Implemented internet access for public resources
+* Validated subnet and routing configurations
 
-### Step 2: Create Public Subnets
+---
 
-Public-Subnet-1 (10.0.1.0/24)
+## Multi-AZ Design
 
-Public-Subnet-2 (10.0.2.0/24)
+The architecture distributes public and private subnets across multiple Availability Zones to improve fault tolerance and availability.
 
-### Step 3: Create Private Subnets
+### Benefits
 
-Private-Subnet-1 (10.0.3.0/24)
+* High Availability
+* Better Fault Isolation
+* Improved Disaster Recovery Readiness
+* Production-Ready Infrastructure Design
 
-Private-Subnet-2 (10.0.4.0/24)
-
-### Step 4: Create Internet Gateway
-
-Name: Test-IGW
-
-Attach Internet Gateway to VPC
-
-### Step 5: Configure Route Tables
-
-Public Route Table
-
-Route:
-
-Destination: 0.0.0.0/0
-
-Target: Internet Gateway
-
-Associate Public Subnets
-
-Private Route Table
-
-Associate Private Subnets
+---
 
 ## Project Outcome
 
 Successfully created a secure and scalable AWS networking environment with:
 
-- Network Isolation
-- Public and Private Segmentation
-- High Availability Design
-- Internet Connectivity for Public Resources
+* Network Isolation
+* Public and Private Segmentation
+* High Availability Design
+* Secure Internet Connectivity
+* Foundation for Multi-Tier Application Deployment
 
-# Real World Use Case
+---
 
-A typical production deployment uses:
+## Real-World Use Case
 
-    - Public Subnets:
-        Application Load Balancer
-        Bastion Host
-        Web Servers
+A typical enterprise cloud deployment uses a similar architecture pattern.
 
-    - Private Subnets:
-        Databases
-        Internal Services
-        Backend Applications
+### Public Subnets
 
-This architecture pattern is commonly used in enterprise cloud environments.
+* Application Load Balancer (ALB)
+* Bastion Host
+* Web Servers
+
+### Private Subnets
+
+* Amazon RDS Databases
+* Backend Services
+* Internal APIs
+* Application Servers
+
+This design improves security by restricting direct internet access to sensitive resources while allowing public-facing applications to remain accessible.
+
+---
+
+## Key Learnings
+
+Through this project, I gained hands-on experience with:
+
+* AWS VPC Design
+* CIDR Planning
+* Public vs Private Subnets
+* Route Tables
+* Internet Gateway Configuration
+* AWS Network Security Concepts
+* Multi-AZ Architecture Design
+
+---
+
+## Interview Questions Covered
+
+1. What is a VPC?
+2. What is CIDR notation?
+3. What is the difference between Public and Private Subnets?
+4. How does a subnet become public?
+5. What is an Internet Gateway?
+6. What is a Route Table?
+7. Why are databases deployed in Private Subnets?
+8. What are the benefits of Multi-AZ architecture?
+
+---
 
 ## Screenshots
 
-Add the following screenshots:
+### Resource Map
 
-- VPC Dashboard
-- Subnets
-- Internet Gateway
-- Route Tables
-- Resource Map
+* AWS Resource Map
+
+### Networking Configuration
+
+* VPC Dashboard
+* Public & Private Subnets
+* Route Tables
+* Internet Gateway
+
+---
 
 ## Author
 
-Ayush Garg
+**Ayush Garg**
 
 AWS Cloud & DevOps Engineer
+
+LinkedIn: https://www.linkedin.com/in/ayushgarg0925
